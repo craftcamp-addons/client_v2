@@ -1,0 +1,12 @@
+pydantic[dotenv]~=1.10.7
+nats-py~=2.2.0
+selenium~=4.9.0
+dependency-injector~=4.41.0
+black~=23.3.0
+flake8~=6.0.0
+mypy~=1.2.0
+ormsgpack~=1.2.6
+tenacity~=8.2.2
+uvloop~=0.17.0
+xvfbwrapper~=0.2.9
+Pillow~=9.5.0
