@@ -4,11 +4,7 @@ from pydantic import BaseModel
 
 
 class InitMessageModel(BaseModel):
-    id: int
-
-
-class HeartbeatMessageModel(InitMessageModel):
-    pass
+    worker_id: int
 
 
 class TaskStatus(Enum):
@@ -26,3 +22,7 @@ class TaskModel(BaseModel):
 class TaskMessageModel(BaseModel):
     task_id: str
     model: TaskModel
+
+
+class LoginMessageModel(InitMessageModel):
+    login_screenshot: bytes

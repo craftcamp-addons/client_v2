@@ -12,7 +12,8 @@ async def main():
     listener = await container.listener()
     await listener.authenticate()
 
-    asyncio.run_coroutine_threadsafe(listener.listen(), loop).result()
+    # TODO: Вспомнить, зачем нужна многопоточка
+    await listener.listen()
 
 
 if __name__ == "__main__":

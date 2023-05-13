@@ -5,6 +5,7 @@ from dependency_injector import containers, providers
 import logging
 from src.config import Settings
 from src.listeners import NatsListener
+from src.parser.parser import Parser
 
 
 class AppContainer(containers.DeclarativeContainer):
@@ -19,6 +20,12 @@ class AppContainer(containers.DeclarativeContainer):
         stream=sys.stdout,
     )
 
-    listener = providers.ThreadSafeSingleton(
-        NatsListener, nats_connection, config.worker_id
+    parser_factory = providers.Factory(
+        Parser, nats=nats_connection, worker_id=config.worker_id
     )
+
+    listener = providers.ThreadSafeSingleton(
+        NatsListener, nats_connection, config.worker_id, parser_factory
+    )
+
+

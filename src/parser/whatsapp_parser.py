@@ -48,7 +48,7 @@ class WhatsappParser:
         number.image = image_bytes.getvalue()
         self.logger.info(f"Фотография {number.number}.png сохранена")
 
-    async def parse(self, task: TaskModel) -> TaskModel:
+    async def parse(self, task: TaskModel) -> None:
         try:
             self.webdriver.get(self.url.format(task.number))
             try:
@@ -85,5 +85,3 @@ class WhatsappParser:
                 task.status = TaskStatus.ERROR
             else:
                 task.status = TaskStatus.SECONDCHECK
-
-        return task
